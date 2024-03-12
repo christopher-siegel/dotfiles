@@ -1,0 +1,5 @@
+opacity=0.85
+# blur=true
+startup_mode="Maximized"
+size=20
+primary.background="#000000"
