@@ -123,7 +123,7 @@ alias ccd='(){ cd ~/Code/$1 ;}'
 alias config='(){ cd ~/.config/nvim && nvim . ;}'
 alias tmuxm='(){ tmux new-session -A -s main ;}'
 
-alias bare='/usr/bin/git --git-dir=$HOME/Code/dotfiles --work-tree=$HOME'
+alias bare='/opt/homebrew/bin/git --git-dir=$HOME/Code/dotfiles --work-tree=$HOME'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
