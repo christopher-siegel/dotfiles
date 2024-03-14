@@ -4,12 +4,26 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'tsserver',
-  'rust_analyzer',
+  'rust_analyzer'
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
+lsp.configure('intelephense', {
+    settings = {
+        intelephense = {
+            telemetry = {
+                enabled = false
+            },
+            environment = {
+                includePaths = {
+                    "[...redacted...]/phpunit/vendor/**"
+                }
+            }
+        }
+    }
+})
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
