@@ -26,8 +26,10 @@ require'nvim-treesitter.configs'.setup {
 
 }
 
-vim.treesitter.language.register('twig', 'twig')
-vim.treesitter.language.register('twig', 'html.twig')
+-- vim.treesitter.language.register('twig', 'twig')
+-- vim.treesitter.language.register('twig', 'html.twig')
+--
+--
 -- require('nvim-treesitter.install').compilers = { 'gcc' }
 
 -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
