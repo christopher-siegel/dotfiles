@@ -18,7 +18,15 @@ vim.call('plug#begin')
 -- Plug('prettier/vim-prettier', { ['do'] = 'yarn install --frozen-lockfile --production && yarn add --dev prettier-plugin-twig-melody' })
 
 Plug('lumiliet/vim-twig')
+-- Vue syntax
+-- Plug('posva/vim-vue')
 
+-- coc.nvim
+-- Plug('neoclide/coc.nvim', { ['branch'] = 'release'})
+
+-- Volar Vue language tools
+-- Plug('yaegassy/coc-volar', { ['do'] = 'yarn install --frozen-lockfile' })
+-- Plug('yaegassy/coc-volar-tools', { ['do'] = 'yarn install --frozen-lockfile' })
 
 vim.call('plug#end')
 
@@ -35,5 +43,20 @@ vim.call('plug#end')
 vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
     pattern = '*',
     -- group = 'vimrc',  -- equivalent to group=mygroup
+    command = "if &ft == 'html.twig' | set ft=twig | endif",
+})
+
+
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+    pattern = '*',
+    -- group = 'vimrc',  -- equivalent to group=mygroup
     command = "if &ft == 'htmldjango.twig' | set ft=twig | endif",
+})
+
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
 })

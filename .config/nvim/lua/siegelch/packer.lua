@@ -12,6 +12,31 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup(
+                {
+                    formatters_by_ft = {
+                        lua = { "stylua" },
+                        -- Conform will run multiple formatters sequentially
+                        python = { "isort", "black" },
+                        -- Use a sub-list to run only the first available formatter
+                        javascript = { { "prettierd", "prettier" } },
+                        twig = { "twig-cs-fixer" },
+                        php = { "easy-coding-standard" },
+                    },
+                    format_on_save = {
+                        -- I recommend these options. See :help conform.format for details.
+                        lsp_fallback = true,
+                        timeout_ms = 500,
+                    },
+                    notify_on_error = true,
+                }
+            )
+        end
+    }
+
+    use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -102,4 +127,5 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'},
         }
     }
+
 end)
